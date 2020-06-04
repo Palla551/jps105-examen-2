@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.Dimension;
@@ -24,17 +25,26 @@ import org.openqa.selenium.Keys;
 import java.util.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
 public class AddTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
   @Before
   public void setUp() throws Exception {
-	//System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
-	//System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-    driver = new FirefoxDriver();
-    js = (JavascriptExecutor) driver;
-    vars = new HashMap<String, Object>();
+//    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
+//    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+
+		FirefoxOptions firefoxOptions = new FirefoxOptions();
+		firefoxOptions.setHeadless(true);
+		driver = new FirefoxDriver(firefoxOptions);
+
+//    ChromeOptions chromeOptions = new ChromeOptions();
+//    chromeOptions.setHeadless(true);
+//    driver = new ChromeDriver(chromeOptions);
+
+//    driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_68,true);
   }
   @After
   public void tearDown() {
